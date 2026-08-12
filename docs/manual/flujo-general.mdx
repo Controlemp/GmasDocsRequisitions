@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+title: Flujo General
+---
+
+# Flujo General
+
+El flujo inicia con la parametrizacion y sincronizacion de catalogos. Luego el Operativo crea la requisicion, el Jefe de Area la revisa, el Gestor de Compras completa la informacion comercial y el Integrador aprueba la orden de compra para sincronizarla con Business Central.
+
+## Secuencia funcional
+
+1. El Administrador selecciona o configura la empresa de trabajo.
+2. El Administrador sincroniza los catalogos desde Business Central hacia el portal.
+3. El Administrador valida usuarios, roles, areas, tipos de requisicion, dimensiones y valores de dimension.
+4. El Operativo crea una requisicion y agrega sus lineas.
+5. El Operativo guarda o envia la requisicion al Jefe de Area.
+6. El Jefe de Area aprueba o rechaza la requisicion.
+7. Si se aprueba, el sistema genera gestiones de compra por linea.
+8. El Gestor de Compras completa proveedor, cantidad confirmada, costo y fecha de entrega.
+9. El Gestor usa **Guardar y Cerrar** para enviar la gestion al Integrador.
+10. El Integrador revisa la orden de compra.
+11. El Integrador aprueba la orden.
+12. Despues de aprobar, el sistema habilita **Sincronizar a Dynamics** para enviar la OC a Business Central.
+
+## Mapa de estados
+
+| Entidad | Estados usados |
+| --- | --- |
+| Requisicion | Abierta, En Revision, Aprobada, Rechazada |
+| Gestion de compra | Abierta, En Revision, Aprobada, Rechazada, Cerrada |
+| Orden de compra | Abierta/En Revision, Aprobada, Rechazada, Integrada |
+
+## Navegacion comun
+
+La parte superior muestra la empresa activa. Los datos de requisiciones, compras y catalogos con alcance empresarial dependen de esta seleccion.
+
+![Selector de empresa y dashboard](/img/manual/administrador/inicio.png)
+
+Si el usuario tiene mas de una empresa asignada, debe seleccionar la empresa correcta antes de trabajar. Al cambiar de empresa, el portal recarga la informacion para evitar mezclar datos entre companias.

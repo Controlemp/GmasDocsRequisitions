@@ -1,0 +1,46 @@
+---
+sidebar_position: 7
+title: Estados
+---
+
+# Estados del Flujo
+
+Los estados permiten identificar en que etapa se encuentra cada documento del proceso.
+
+## Requisicion
+
+| Estado | Significado | Accion principal |
+| --- | --- | --- |
+| Abierta | La requisicion fue guardada y aun puede editarse. | Operativo edita o envia al Jefe de Area. |
+| En Revision | La requisicion fue enviada al Jefe de Area. | Jefe aprueba o rechaza. |
+| Aprobada | La requisicion fue aprobada. | Se generan gestiones de compra. |
+| Rechazada | El Jefe de Area rechazo la requisicion. | Operativo corrige y reenvia. |
+
+## Gestion de compra
+
+| Estado | Significado |
+| --- | --- |
+| Abierta | Pendiente de completar por Compras. |
+| En Revision | Enviada al Integrador mediante Guardar y Cerrar. |
+| Aprobada | Procesada dentro del flujo de compras. |
+| Rechazada | Devuelta para gestion de compras. |
+| Cerrada | Gestion finalizada por aprobacion o integracion de la OC. |
+
+## Orden de compra
+
+| Estado | Significado |
+| --- | --- |
+| Abierta / En Revision | Orden pendiente de decision por el Integrador. |
+| Aprobada | Orden aprobada y lista para sincronizar a Dynamics. |
+| Rechazada | Orden rechazada; vuelve a gestion de compras. |
+| Integrada | Orden enviada correctamente a Business Central. |
+
+## Visibilidad por rol
+
+| Rol | Documentos visibles |
+| --- | --- |
+| Administrador | Todas las requisiciones y catalogos permitidos. |
+| Operativo | Requisiciones abiertas, rechazadas y enviadas por revisar. |
+| Jefe de Area | Requisiciones en revision. |
+| Gestor de Compras | Gestiones generadas desde requisiciones aprobadas. |
+| Integrador a Dynamics | Ordenes de compra asignadas para revisar o sincronizar. |

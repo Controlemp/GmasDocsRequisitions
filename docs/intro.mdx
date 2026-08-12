@@ -1,47 +1,45 @@
 ---
 sidebar_position: 1
+title: Inicio
 ---
 
-# Tutorial Intro
+# Manual de Usuario - Portal de Requisiciones
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Este manual describe el uso funcional del Portal de Requisiciones por rol: Administrador del Sistema, Operativo, Jefe de Area, Gestor de Compras e Integrador a Dynamics.
 
-## Getting Started
+El sistema centraliza la creacion de requisiciones internas, su aprobacion, la gestion de compras y el envio final de ordenes de compra a Business Central.
 
-Get started by **creating a new site**.
+![Dashboard del portal](/img/manual/administrador/dashboard.png)
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Alcance del manual
 
-### What you'll need
+El manual cubre las acciones visibles para el usuario final dentro del portal:
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- Seleccion de empresa activa.
+- Parametrizacion funcional inicial.
+- Creacion y seguimiento de requisiciones.
+- Aprobacion o rechazo por Jefe de Area.
+- Gestion de compras por proveedor, cantidad, costo y fecha de entrega.
+- Revision, aprobacion y sincronizacion de ordenes de compra.
 
-## Generate a new site
+## Roles del sistema
 
-Generate a new Docusaurus site using the **classic template**.
+Los roles se documentan por separado, aunque un mismo usuario puede tener mas de un rol asignado. En el ambiente de pruebas usado para las capturas, el usuario `gestor_compra_dev` tiene los roles Gestor de Compras e Integrador a Dynamics.
 
-The classic template will automatically be added to your project after you run the command:
+| Rol | Responsabilidad principal |
+| --- | --- |
+| Administrador del Sistema | Parametriza empresas, usuarios, roles, areas, catalogos y dimensiones. |
+| Operativo | Crea requisiciones, carga lineas y envia al Jefe de Area. |
+| Jefe de Area | Revisa requisiciones pendientes, aprueba o rechaza. |
+| Gestor de Compras | Completa datos de compra y envia la gestion al Integrador. |
+| Integrador a Dynamics | Revisa, aprueba y sincroniza la orden de compra hacia Business Central. |
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+## Regla de integracion
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+La sincronizacion de catalogos es unidireccional: desde Business Central hacia el Portal de Requisiciones. El portal recibe catalogos como empresas, almacenes, articulos, proveedores, dimensiones y valores de dimension.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+El unico documento que el portal envia hacia Business Central es la orden de compra o pedido de compra, desde la accion final de sincronizacion del Integrador.
 
-## Start your site
+## Requisicion rechazada
 
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Segun el comportamiento actual de la aplicacion, cuando el Jefe de Area rechaza una requisicion, esta queda en estado Rechazada. El Operativo puede abrirla, corregirla y reenviarla al Jefe de Area. No se crea una requisicion nueva; se conserva la misma cabecera y el mismo numero.

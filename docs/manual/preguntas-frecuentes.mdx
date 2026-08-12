@@ -1,0 +1,38 @@
+---
+sidebar_position: 8
+title: Preguntas Frecuentes
+---
+
+# Preguntas Frecuentes
+
+## Que pasa si cambio la empresa activa?
+
+El portal recarga los datos para trabajar con el alcance de la nueva empresa. Si hay un borrador local de requisicion, el sistema avisa antes del cambio.
+
+## La sincronizacion envia catalogos a Business Central?
+
+No. La sincronizacion de catalogos es unidireccional desde Business Central hacia el portal. El portal solo envia hacia Business Central la orden de compra o pedido de compra cuando el Integrador usa **Sincronizar a Dynamics**.
+
+## Cuando se genera el numero de requisicion?
+
+El numero se reserva al guardar la requisicion. Al entrar a una nueva requisicion puede verse una referencia temporal con `XXXXXX`.
+
+## Que pasa si una requisicion es rechazada?
+
+Queda en estado Rechazada. En el comportamiento actual, el Operativo puede corregirla y reenviarla al Jefe de Area conservando el mismo numero de requisicion.
+
+## Para que sirven las dimensiones?
+
+Las dimensiones son campos configurados por empresa para clasificar contable u operativamente la compra. Si una dimension no esta configurada en la empresa, no se solicita al usuario.
+
+## Como funciona el autocompletado de dimensiones?
+
+Cuando existen valores relacionados en forma de arbol, seleccionar un valor hijo permite completar valores padre relacionados. Esta regla depende de que la jerarquia este configurada correctamente.
+
+## Que significa Guardar y Cerrar?
+
+En Gestion de Compras, **Guardar y Cerrar** guarda la informacion comercial y envia la gestion al Integrador o a integracion BC para generar la orden de compra.
+
+## Por que no aparece Sincronizar a Dynamics?
+
+La accion aparece despues de aprobar la orden de compra. Primero se revisa y aprueba la OC; luego el portal permite sincronizarla hacia Business Central.

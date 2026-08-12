@@ -1,0 +1,113 @@
+---
+sidebar_position: 2
+title: Administrador
+---
+
+# Administrador del Sistema
+
+El Administrador prepara el portal para que el flujo de requisiciones funcione correctamente por empresa, area y rol. La carga inicial de catalogos la realiza el dueno del producto; el usuario administrador del portal debe sincronizar y validar la informacion disponible.
+
+![Menu de administracion](/img/manual/administrador/empresas.png)
+
+## Orden recomendado de parametrizacion
+
+1. Empresas.
+2. Almacenes.
+3. Articulos.
+4. Proveedores.
+5. Dimensiones.
+6. Valores de Dimension.
+7. Tipos de Requisicion.
+8. Usuarios.
+9. Roles por usuario.
+10. Areas y responsables.
+
+## Sincronizacion de catalogos
+
+La sincronizacion de catalogos trae informacion desde Business Central hacia el Portal de Requisiciones. Es un proceso unidireccional: el portal no envia catalogos hacia Business Central.
+
+Catalogos sincronizables:
+
+- Empresas.
+- Almacenes.
+- Dimensiones.
+- Valores de Dimension.
+- Articulos.
+- Proveedores.
+
+En los listados donde exista la accion **Sincronizar Datos**, el Administrador debe ejecutarla para actualizar informacion desde Business Central.
+
+## Empresas
+
+En **Administracion > Empresas** se visualizan las companias disponibles y su configuracion de dimensiones.
+
+![Listado de empresas](/img/manual/administrador/empresas.png)
+
+Cada empresa puede tener hasta 8 dimensiones configuradas:
+
+- Dimension 1 a Dimension 8.
+- Obligatoriedad de dimension por tipo de articulo: Inventario, Servicio y Fuera de Inventario.
+
+Cuando una dimension esta configurada en la empresa, aparece en cabecera o lineas de requisicion segun corresponda. Si una dimension no esta configurada, el usuario no debe capturarla.
+
+## Areas y responsables
+
+En **Administracion > Areas** se definen los responsables del flujo por area.
+
+![Listado de areas](/img/manual/administrador/areas.png)
+
+Cada area debe tener configurado:
+
+- Jefe de Area.
+- Gestor Compra Local.
+- Gestor Compra Import.
+- Aprobador Compra Local.
+- Aprobador Compra Import.
+
+Estas asignaciones permiten que el sistema determine a quien se envia una requisicion aprobada y quien debe revisar la orden de compra segun el tipo de requisicion.
+
+## Usuarios y roles
+
+En **Administracion > Usuarios** se administran los usuarios del portal.
+
+![Listado de usuarios](/img/manual/administrador/usuarios.png)
+
+El Administrador debe asignar:
+
+- Empresas permitidas para el usuario.
+- Rol o roles del usuario.
+- Informacion basica de acceso.
+
+Un usuario puede tener mas de un rol. Por ejemplo, un usuario puede ser Gestor de Compras e Integrador a Dynamics, pero el manual separa las responsabilidades para evitar confusiones operativas.
+
+## Tipos de requisicion
+
+En **Administracion > Tipos de Requisicion** se mantienen las categorias del proceso, como Local o Importacion.
+
+![Tipos de requisicion](/img/manual/administrador/tipos-requisicion.png)
+
+El tipo de requisicion participa en la asignacion de responsables de compra y aprobadores: Local usa responsables locales; Importacion usa responsables de importacion.
+
+## Dimensiones y valores de dimension
+
+Las dimensiones representan clasificaciones contables u operativas configuradas por empresa.
+
+![Dimensiones](/img/manual/administrador/dimensiones.png)
+
+Los valores de dimension contienen los codigos seleccionables por el usuario en cabecera o lineas.
+
+![Valores de dimension](/img/manual/administrador/valores-dimension.png)
+
+Cuando los valores tienen relacion padre-hijo, el sistema puede autocompletar dimensiones superiores. Por ejemplo, si el usuario selecciona un valor hijo en una dimension inferior, el portal resuelve los valores padre relacionados mediante la jerarquia configurada.
+
+## Almacenes, articulos y proveedores
+
+Los almacenes, articulos y proveedores se consultan por empresa activa.
+
+![Almacenes](/img/manual/administrador/almacenes.png)
+
+![Articulos](/img/manual/administrador/articulos.png)
+
+![Proveedores](/img/manual/administrador/proveedores.png)
+
+El usuario debe revisar que estos catalogos esten sincronizados antes de iniciar pruebas o uso productivo del flujo.

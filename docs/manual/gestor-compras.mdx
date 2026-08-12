@@ -1,0 +1,60 @@
+---
+sidebar_position: 5
+title: Gestor de Compras
+---
+
+# Gestor de Compras
+
+El Gestor de Compras trabaja sobre gestiones generadas a partir de requisiciones aprobadas. Cada gestion corresponde a una linea que debe completarse con informacion comercial.
+
+![Gestion de compras](/img/manual/gestor-compra-integrador/gestion-compras.png)
+
+## Gestionar lineas
+
+1. Ingresar a **Compras > Gestion de Compras**.
+2. Revisar las lineas pendientes.
+3. Asignar proveedor.
+4. Confirmar cantidad.
+5. Registrar costo unitario.
+6. Registrar fecha de entrega.
+7. Guardar cambios o usar **Guardar y Cerrar**.
+
+## Datos que debe completar
+
+| Campo | Uso |
+| --- | --- |
+| Proveedor | Define a quien se emitira la orden de compra. |
+| Cantidad confirmada | Cantidad que se comprara o atendera. |
+| Costo unitario | Valor unitario negociado. |
+| Costo total | Se calcula con cantidad confirmada por costo unitario. |
+| Fecha de entrega | Fecha comprometida para la compra. |
+
+## Guardar cambios
+
+La accion **Guardar cambios** persiste las ediciones en la gestion sin enviarla al siguiente paso.
+
+## Guardar y Cerrar
+
+La accion **Guardar y Cerrar** es la funcion operativa para enviar la gestion al Integrador o a integracion BC. Antes de enviarla, la linea debe tener proveedor, cantidad confirmada mayor a cero y costo unitario mayor a cero.
+
+Al usar **Guardar y Cerrar**:
+
+- Se guardan los cambios pendientes.
+- El backend genera la orden de compra para revision.
+- La orden queda disponible en **Compras > Revision de Ordenes de Compra**.
+
+## Filtros de gestion
+
+La pantalla permite revisar gestiones por estado:
+
+- Pendientes.
+- En revision.
+- Aprobadas.
+
+Las lineas en revision o aprobadas son de consulta; la edicion se realiza sobre las pendientes.
+
+## Historico de compras
+
+El Gestor puede revisar gestiones ya procesadas desde el historico de compras.
+
+![Historico de compras](/img/manual/gestor-compra-integrador/gestion-compras-historico.png)

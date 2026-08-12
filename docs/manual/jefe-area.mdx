@@ -1,0 +1,48 @@
+---
+sidebar_position: 4
+title: Jefe de Area
+---
+
+# Jefe de Area
+
+El Jefe de Area revisa las requisiciones enviadas por los Operativos. Su decision define si la requisicion avanza a Compras o regresa al Operativo como rechazada.
+
+![Requisiciones pendientes](/img/manual/jefe-area/requisiciones-pendientes.png)
+
+## Revisar requisiciones
+
+1. Ingresar a **Catalogos > Requisiciones**.
+2. Revisar las requisiciones en estado En Revision.
+3. Abrir la requisicion que requiere decision.
+4. Validar cabecera, lineas, cantidades, bodega y dimensiones.
+5. Aprobar o rechazar.
+
+## Pantalla de decision
+
+En el detalle de la requisicion, el Jefe de Area visualiza las acciones **Aprobar** y **Rechazar**.
+
+![Detalle de aprobacion](/img/manual/jefe-area/detalle-aprobacion.png)
+
+## Aprobar
+
+Al aprobar:
+
+- La requisicion cambia a Aprobada.
+- Se registra fecha y hora de aprobacion.
+- El backend genera gestiones de compra por linea.
+- Las gestiones se asignan al Gestor de Compras del area segun el tipo de requisicion.
+
+## Rechazar
+
+Al rechazar:
+
+- El sistema solicita un motivo.
+- La requisicion cambia a Rechazada.
+- El motivo queda registrado como observacion.
+- El Operativo puede corregirla y reenviarla.
+
+## Historico
+
+El Jefe de Area puede consultar el historico de requisiciones relacionadas.
+
+![Historico del Jefe de Area](/img/manual/jefe-area/historico.png)

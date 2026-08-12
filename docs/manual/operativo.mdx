@@ -1,0 +1,84 @@
+---
+sidebar_position: 3
+title: Operativo
+---
+
+# Operativo
+
+El Operativo crea requisiciones para solicitar articulos o servicios. Puede guardar avances, cargar lineas manualmente o por Excel, y enviar la requisicion al Jefe de Area.
+
+![Listado de requisiciones del Operativo](/img/manual/operativo/requisiciones.png)
+
+## Crear una requisicion
+
+1. Ingresar a **Catalogos > Requisiciones**.
+2. Seleccionar **Nueva**.
+3. Revisar la cabecera de la requisicion.
+4. Seleccionar el tipo de requisicion.
+5. Seleccionar bodega y dimensiones de cabecera cuando aplique.
+6. Agregar lineas.
+7. Guardar o enviar al Jefe de Area.
+
+![Nueva requisicion](/img/manual/operativo/nueva-requisicion.png)
+
+## Cabecera
+
+La cabecera contiene informacion general:
+
+- Numero de requisicion.
+- Fecha de requisicion.
+- Area.
+- Bodega.
+- Usuario asignado.
+- Tipo de requisicion.
+- Valores de dimension configurados por empresa.
+- Observacion.
+- Archivo adjunto.
+
+En el modo actual, el numero de requisicion se reserva al guardar, no al entrar a la pantalla. Antes de guardar, el portal puede mostrar una referencia temporal con `XXXXXX`.
+
+## Lineas
+
+Las lineas contienen el detalle solicitado:
+
+- Articulo.
+- Codigo.
+- Tipo.
+- Cantidad solicitada.
+- Unidad de medida.
+- Bodega.
+- Dimensiones configuradas por empresa.
+
+Para agregar lineas, usar **Agregar** en la seccion Lineas.
+
+![Agregar lineas](/img/manual/operativo/agregar-lineas.png)
+
+La bodega y las dimensiones de cabecera sirven como valores por defecto para las lineas. Si ya existen lineas y el usuario cambia un valor de cabecera, el sistema pregunta si desea actualizar tambien las lineas.
+
+## Carga por Excel
+
+El Operativo puede usar **Cargar Excel** para cargar o reemplazar lineas de la requisicion.
+
+![Carga por Excel](/img/manual/operativo/cargar-excel.png)
+
+La plantilla debe respetar las columnas de dimension activas para la empresa. En los valores de dimension se usa el codigo del valor configurado.
+
+## Guardar
+
+La accion **Guardar** persiste la requisicion sin enviarla al Jefe de Area. Mientras la requisicion esta Abierta, el Operativo puede continuar editandola.
+
+## Enviar a Jefe de Area
+
+La accion **Enviar a Jefe de Area** valida que existan lineas y cambia la requisicion a En Revision. Una vez enviada, el Operativo no puede modificarla mientras este pendiente de decision.
+
+## Requisicion rechazada
+
+Si el Jefe de Area rechaza la requisicion, el Operativo la visualiza en estado Rechazada. En el comportamiento actual de la aplicacion, puede abrirla, corregirla y reenviarla al Jefe de Area conservando el mismo numero de requisicion.
+
+## Historico e impresion
+
+El Operativo puede consultar historico e imprimir requisiciones desde el menu.
+
+![Historico de requisiciones](/img/manual/operativo/historico.png)
+
+![Imprimir requisicion](/img/manual/operativo/imprimir-requisicion.png)
