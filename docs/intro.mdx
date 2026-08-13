@@ -5,26 +5,27 @@ title: Inicio
 
 # Manual de Usuario - Portal de Requisiciones
 
-Este manual describe el uso funcional del Portal de Requisiciones por rol: Administrador del Sistema, Operativo, Jefe de Area, Gestor de Compras e Integrador a Dynamics.
+Bienvenido al manual funcional del Portal de Requisiciones. Esta guia explica como usar la aplicacion segun el rol asignado y como avanza una solicitud desde su creacion hasta la generacion e integracion de la orden de compra.
 
-El sistema centraliza la creacion de requisiciones internas, su aprobacion, la gestion de compras y el envio final de ordenes de compra a Business Central.
+El portal centraliza las requisiciones internas, controla sus aprobaciones, permite gestionar la compra y envia la orden de compra aprobada hacia Business Central.
 
-![Dashboard del portal](/img/manual/administrador/dashboard.png)
+![Dashboard principal del portal](/img/manual/general/dashboard-principal.png)
 
-## Alcance del manual
+## Que permite hacer el portal
 
-El manual cubre las acciones visibles para el usuario final dentro del portal:
+El Portal de Requisiciones permite administrar el ciclo completo de compra interna:
 
-- Seleccion de empresa activa.
-- Parametrizacion funcional inicial.
-- Creacion y seguimiento de requisiciones.
-- Aprobacion o rechazo por Jefe de Area.
-- Gestion de compras por proveedor, cantidad, costo y fecha de entrega.
-- Revision, aprobacion y sincronizacion de ordenes de compra.
+1. El Administrador configura la empresa, usuarios, areas, catalogos y dimensiones.
+2. El Operativo crea la requisicion y registra sus lineas.
+3. El Jefe de Area revisa la solicitud y decide si la aprueba o la rechaza.
+4. El Gestor de Compras completa la informacion comercial de la compra.
+5. El Integrador revisa la orden de compra, la aprueba y luego la sincroniza con Business Central.
 
-## Roles del sistema
+## Como usar este manual
 
-Los roles se documentan por separado, aunque un mismo usuario puede tener mas de un rol asignado. En el ambiente de pruebas usado para las capturas, el usuario `gestor_compra_dev` tiene los roles Gestor de Compras e Integrador a Dynamics.
+La documentacion esta organizada por rol. Cada seccion muestra las pantallas y acciones que corresponden a ese perfil de usuario.
+
+Un usuario puede tener mas de un rol asignado. Por ejemplo, el mismo usuario podria actuar como Gestor de Compras e Integrador; aun asi, en este manual ambos roles se explican por separado porque realizan acciones distintas dentro del flujo.
 
 | Rol | Responsabilidad principal |
 | --- | --- |
@@ -34,12 +35,25 @@ Los roles se documentan por separado, aunque un mismo usuario puede tener mas de
 | Gestor de Compras | Completa datos de compra y envia la gestion al Integrador. |
 | Integrador a Dynamics | Revisa, aprueba y sincroniza la orden de compra hacia Business Central. |
 
-## Regla de integracion
+## Reglas funcionales importantes
 
-La sincronizacion de catalogos es unidireccional: desde Business Central hacia el Portal de Requisiciones. El portal recibe catalogos como empresas, almacenes, articulos, proveedores, dimensiones y valores de dimension.
+- **Empresa activa.** Las configuraciones, catalogos, requisiciones y compras se trabajan segun la empresa seleccionada por el usuario.
+- **Catalogos desde Business Central.** La sincronizacion de catalogos es unidireccional: desde Business Central hacia el Portal de Requisiciones.
+- **Documento enviado a Business Central.** El unico documento que el portal envia hacia Business Central es la orden de compra o pedido de compra.
+- **Aprobacion antes de sincronizar.** La orden de compra primero debe aprobarse; despues aparece la accion para sincronizar a Dynamics/Business Central.
+- **Requisicion rechazada.** Cuando una requisicion es rechazada, el Operativo puede corregirla y reenviarla. No se crea una requisicion nueva; se conserva la misma cabecera y el mismo numero.
 
-El unico documento que el portal envia hacia Business Central es la orden de compra o pedido de compra, desde la accion final de sincronizacion del Integrador.
+## Puntos clave de valor
 
-## Requisicion rechazada
+Estos son los aspectos mas relevantes de la aplicacion:
 
-Segun el comportamiento actual de la aplicacion, cuando el Jefe de Area rechaza una requisicion, esta queda en estado Rechazada. El Operativo puede abrirla, corregirla y reenviarla al Jefe de Area. No se crea una requisicion nueva; se conserva la misma cabecera y el mismo numero.
+1. **Flujo completo de requisicion a orden de compra.** El portal controla el proceso desde la solicitud inicial hasta la generacion e integracion de la OC.
+2. **Integracion controlada con Business Central.** Los catalogos se sincronizan desde BC hacia el portal y solo la OC aprobada se envia de regreso.
+3. **Control por roles operativos.** Cada etapa tiene responsables definidos: Operativo, Jefe de Area, Gestor de Compras e Integrador.
+4. **Gestion multiempresa.** La empresa activa separa catalogos, configuraciones, requisiciones y compras.
+5. **Administracion de dimensiones por empresa.** Cada empresa puede definir sus dimensiones contables u operativas segun su propia estructura.
+6. **Dimensiones organizadas como arbol.** Los valores de dimension pueden relacionarse jerarquicamente para autocompletar valores padre al seleccionar un valor hijo.
+7. **Obligatoriedad de dimensiones por tipo de articulo.** El sistema exige dimensiones cuando corresponde segun si el articulo es de inventario, servicio o fuera de inventario.
+8. **Carga masiva de lineas por Excel.** El Operativo puede acelerar la captura de requisiciones respetando las columnas de dimension configuradas.
+9. **Aprobacion e integracion final separadas.** La OC se revisa y aprueba antes de habilitar su sincronizacion con Dynamics/Business Central.
+10. **Requisiciones rechazadas corregibles.** El Operativo puede corregir y reenviar una requisicion rechazada sin perder trazabilidad.
