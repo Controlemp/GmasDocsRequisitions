@@ -5,7 +5,7 @@ title: Flujo General
 
 # Flujo General
 
-El flujo inicia con la parametrizacion y sincronizacion de catalogos. Luego el Operativo crea la requisicion, el Jefe de Area la revisa, el Gestor de Compras completa la informacion comercial y el Integrador aprueba la orden de compra para sincronizarla con Business Central.
+El flujo inicia con la parametrizacion y sincronizacion de catalogos. Luego el Operativo crea la requisicion, el Jefe de Area la revisa y el Gestor de Compras completa la informacion comercial, revisa la orden de compra y la integra con Business Central.
 
 ## Secuencia funcional
 
@@ -17,10 +17,10 @@ El flujo inicia con la parametrizacion y sincronizacion de catalogos. Luego el O
 6. El Jefe de Area aprueba o rechaza la requisicion.
 7. Si se aprueba, el sistema genera gestiones de compra por linea.
 8. El Gestor de Compras completa proveedor, cantidad confirmada, costo y fecha de entrega.
-9. El Gestor usa **Guardar y Cerrar** para enviar la gestion al Integrador.
-10. El Integrador revisa la orden de compra.
-11. El Integrador aprueba la orden.
-12. Despues de aprobar, el sistema habilita **Sincronizar a Dynamics** para enviar la OC a Business Central.
+9. El Gestor usa **Enviar a revision de compra** para generar la orden de compra.
+10. El Gestor revisa la orden de compra en **Compras > Revision OC**.
+11. El Gestor aprueba o rechaza la orden.
+12. Despues de aprobar, el sistema habilita **Integrar a BC** para enviar la OC a Business Central.
 
 ## Mapa de estados
 

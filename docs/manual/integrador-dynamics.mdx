@@ -1,18 +1,18 @@
 ---
 sidebar_position: 6
-title: Integrador a Dynamics
+title: Integracion a Business Central
 ---
 
-# Integrador a Dynamics
+# Integracion a Business Central
 
-El Integrador revisa las ordenes de compra generadas desde la gestion de compras. Primero aprueba la orden y, despues de la aprobacion, el sistema habilita la sincronizacion hacia Business Central.
+La integracion de ordenes de compra a Business Central se realiza desde la revision de OC. Primero se aprueba la orden y, despues de la aprobacion, el sistema habilita la accion **Integrar a BC**.
 
 ![Revision de ordenes de compra](/img/manual/integracion/revision-ordenes-compra.png)
 
 ## Revisar ordenes
 
-1. Ingresar a **Compras > Revision de Ordenes de Compra**.
-2. Filtrar por estado Abiertas.
+1. Ingresar a **Compras > Revision OC**.
+2. Filtrar por estado Abiertas o En Revision.
 3. Abrir la orden de compra.
 4. Validar proveedor, RUC, requisiciones relacionadas, detalle, cantidades y costos.
 5. Aprobar o rechazar.
@@ -25,7 +25,7 @@ Al aprobar:
 
 - La orden cambia a Aprobada.
 - Las gestiones hijas quedan cerradas.
-- El sistema habilita la accion **Sincronizar a Dynamics**.
+- El sistema habilita la accion **Integrar a BC**.
 
 ## Rechazar orden
 
@@ -36,11 +36,11 @@ Al rechazar:
 - Las gestiones relacionadas cambian a Rechazada.
 - Las cantidades y costos se reinician para que vuelvan a gestion de compras.
 
-## Sincronizar a Dynamics
+## Integrar a BC
 
-La accion **Sincronizar a Dynamics** aparece despues de aprobar la orden. Esta accion envia la orden de compra o pedido de compra desde el portal hacia Business Central.
+La accion **Integrar a BC** aparece despues de aprobar la orden. Esta accion envia la orden de compra o pedido de compra desde el portal hacia Business Central.
 
-Antes de sincronizar, el portal valida que la orden tenga datos completos:
+Antes de integrar, el portal valida que la orden tenga datos completos:
 
 - Lineas de detalle.
 - Codigo y descripcion de articulo.
@@ -48,12 +48,13 @@ Antes de sincronizar, el portal valida que la orden tenga datos completos:
 - Cantidad confirmada.
 - Precio unitario.
 
-Si la sincronizacion responde correctamente, la orden cambia a Integrada.
+Si la integracion responde correctamente, la orden cambia a Integrada.
 
 ## Impresion y reportes
 
-El Integrador puede imprimir ordenes y revisar reportes de compra.
+El Gestor de Compras puede imprimir ordenes y revisar reportes de compra.
 
 ![Imprimir orden de compra](/img/manual/integracion/impresion-orden-compra.png)
 
 ![Reporte general de compras](/img/manual/reportes/reporte-general-compras.png)
+

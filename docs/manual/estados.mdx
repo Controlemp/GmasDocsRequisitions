@@ -21,7 +21,7 @@ Los estados permiten identificar en que etapa se encuentra cada documento del pr
 | Estado | Significado |
 | --- | --- |
 | Abierta | Pendiente de completar por Compras. |
-| En Revision | Enviada al Integrador mediante Guardar y Cerrar. |
+| En Revision | Enviada a revision de compra mediante **Enviar a revision de compra**. |
 | Aprobada | Procesada dentro del flujo de compras. |
 | Rechazada | Devuelta para gestion de compras. |
 | Cerrada | Gestion finalizada por aprobacion o integracion de la OC. |
@@ -30,8 +30,8 @@ Los estados permiten identificar en que etapa se encuentra cada documento del pr
 
 | Estado | Significado |
 | --- | --- |
-| Abierta / En Revision | Orden pendiente de decision por el Integrador. |
-| Aprobada | Orden aprobada y lista para sincronizar a Dynamics. |
+| Abierta / En Revision | Orden pendiente de decision por el Gestor de Compras. |
+| Aprobada | Orden aprobada y lista para integrar a Business Central. |
 | Rechazada | Orden rechazada; vuelve a gestion de compras. |
 | Integrada | Orden enviada correctamente a Business Central. |
 
@@ -42,5 +42,4 @@ Los estados permiten identificar en que etapa se encuentra cada documento del pr
 | Administrador | Todas las requisiciones y catalogos permitidos. |
 | Operativo | Requisiciones abiertas, rechazadas y enviadas por revisar. |
 | Jefe de Area | Requisiciones en revision. |
-| Gestor de Compras | Gestiones generadas desde requisiciones aprobadas. |
-| Integrador a Dynamics | Ordenes de compra asignadas para revisar o sincronizar. |
+| Gestor de Compras | Gestiones generadas desde requisiciones aprobadas y ordenes de compra asignadas para revisar o integrar. |

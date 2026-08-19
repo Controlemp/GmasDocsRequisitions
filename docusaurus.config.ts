@@ -92,7 +92,7 @@ const config: Config = {
               to: '/docs/manual/operativo'
             },
             {
-              label: 'Integrador',
+              label: 'Integracion BC',
               to: '/docs/manual/integrador-dynamics'
             }
           ]
@@ -111,7 +111,7 @@ const config: Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} GrupoMas. Manual Portal de Requisiciones.`
+      copyright: `Copyright Â© ${new Date().getFullYear()} GrupoMas. Manual Portal de Requisiciones.`
     },
     prism: {
       theme: prismThemes.github,
@@ -121,3 +121,4 @@ const config: Config = {
 };
 
 export default config;
+

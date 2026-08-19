@@ -5,7 +5,7 @@ title: Gestor de Compras
 
 # Gestor de Compras
 
-El Gestor de Compras trabaja sobre gestiones generadas a partir de requisiciones aprobadas. Cada gestion corresponde a una linea que debe completarse con informacion comercial.
+El Gestor de Compras trabaja sobre gestiones generadas a partir de requisiciones aprobadas. Cada gestion corresponde a una linea que debe completarse con informacion comercial. En el flujo actual, este mismo rol tambien revisa, aprueba o rechaza la orden de compra y ejecuta la integracion con Business Central.
 
 ![Gestion de compras pendientes](/img/manual/compras/gestion-compras-pendientes.png)
 
@@ -17,7 +17,7 @@ El Gestor de Compras trabaja sobre gestiones generadas a partir de requisiciones
 4. Confirmar cantidad.
 5. Registrar costo unitario.
 6. Registrar fecha de entrega.
-7. Guardar cambios o usar **Guardar y Cerrar**.
+7. Guardar cambios o usar **Enviar a revision de compra**.
 
 ## Datos que debe completar
 
@@ -33,15 +33,56 @@ El Gestor de Compras trabaja sobre gestiones generadas a partir de requisiciones
 
 La accion **Guardar cambios** persiste las ediciones en la gestion sin enviarla al siguiente paso.
 
-## Guardar y Cerrar
+## Enviar a revision de compra
 
-La accion **Guardar y Cerrar** es la funcion operativa para enviar la gestion al Integrador o a integracion BC. Antes de enviarla, la linea debe tener proveedor, cantidad confirmada mayor a cero y costo unitario mayor a cero.
+La accion **Enviar a revision de compra** guarda la informacion comercial y genera la orden de compra para su revision. Antes de enviarla, la linea debe tener proveedor, cantidad confirmada mayor a cero y costo unitario mayor a cero.
 
-Al usar **Guardar y Cerrar**:
+Al usar **Enviar a revision de compra**:
 
 - Se guardan los cambios pendientes.
 - El backend genera la orden de compra para revision.
-- La orden queda disponible en **Compras > Revision de Ordenes de Compra**.
+- La orden queda disponible en **Compras > Revision OC**.
+
+## Revisar ordenes de compra
+
+1. Ingresar a **Compras > Revision OC**.
+2. Filtrar por estado Abiertas o En Revision.
+3. Abrir la orden de compra.
+4. Validar proveedor, RUC, requisiciones relacionadas, detalle, cantidades y costos.
+5. Aprobar o rechazar.
+
+![Detalle de orden de compra para aprobar o sincronizar](/img/manual/integracion/detalle-orden-compra-aprobar-sincronizar.png)
+
+## Aprobar orden
+
+Al aprobar:
+
+- La orden cambia a Aprobada.
+- Las gestiones hijas quedan cerradas.
+- El sistema habilita la accion **Integrar a BC**.
+
+## Rechazar orden
+
+Al rechazar:
+
+- Se solicita un motivo.
+- La orden cambia a Rechazada.
+- Las gestiones relacionadas cambian a Rechazada.
+- Las cantidades y costos se reinician para que vuelvan a gestion de compras.
+
+## Integrar a BC
+
+La accion **Integrar a BC** aparece despues de aprobar la orden. Esta accion envia la orden de compra o pedido de compra desde el portal hacia Business Central.
+
+Antes de integrar, el portal valida que la orden tenga datos completos:
+
+- Lineas de detalle.
+- Codigo y descripcion de articulo.
+- Proveedor y RUC.
+- Cantidad confirmada.
+- Precio unitario.
+
+Si la integracion responde correctamente, la orden cambia a Integrada.
 
 ## Filtros de gestion
 
@@ -53,8 +94,12 @@ La pantalla permite revisar gestiones por estado:
 
 Las lineas en revision o aprobadas son de consulta; la edicion se realiza sobre las pendientes.
 
-## Historico de compras
+## Historico de compras, impresion y reportes
 
-El Gestor puede revisar gestiones ya procesadas desde el historico de compras.
+El Gestor puede revisar gestiones ya procesadas desde el historico de compras, imprimir ordenes y consultar el reporte general.
 
 ![Historico de gestion de compras](/img/manual/compras/historico-gestion-compras.png)
+
+![Imprimir orden de compra](/img/manual/integracion/impresion-orden-compra.png)
+
+![Reporte general de compras](/img/manual/reportes/reporte-general-compras.png)

@@ -19,28 +19,25 @@ El Portal de Requisiciones permite administrar el ciclo completo de compra inter
 2. El Operativo crea la requisicion y registra sus lineas.
 3. El Jefe de Area revisa la solicitud y decide si la aprueba o la rechaza.
 4. El Gestor de Compras completa la informacion comercial de la compra.
-5. El Integrador revisa la orden de compra, la aprueba y luego la sincroniza con Business Central.
+5. El Gestor de Compras revisa la orden de compra, la aprueba o rechaza y, cuando corresponde, la integra con Business Central.
 
 ## Como usar este manual
 
 La documentacion esta organizada por rol. Cada seccion muestra las pantallas y acciones que corresponden a ese perfil de usuario.
-
-Un usuario puede tener mas de un rol asignado. Por ejemplo, el mismo usuario podria actuar como Gestor de Compras e Integrador; aun asi, en este manual ambos roles se explican por separado porque realizan acciones distintas dentro del flujo.
 
 | Rol | Responsabilidad principal |
 | --- | --- |
 | Administrador del Sistema | Parametriza empresas, usuarios, roles, areas, catalogos y dimensiones. |
 | Operativo | Crea requisiciones, carga lineas y envia al Jefe de Area. |
 | Jefe de Area | Revisa requisiciones pendientes, aprueba o rechaza. |
-| Gestor de Compras | Completa datos de compra y envia la gestion al Integrador. |
-| Integrador a Dynamics | Revisa, aprueba y sincroniza la orden de compra hacia Business Central. |
+| Gestor de Compras | Completa datos de compra, envia a revision de compra, aprueba/rechaza la OC e integra a Business Central. |
 
 ## Reglas funcionales importantes
 
 - **Empresa activa.** Las configuraciones, catalogos, requisiciones y compras se trabajan segun la empresa seleccionada por el usuario.
 - **Catalogos desde Business Central.** La sincronizacion de catalogos es unidireccional: desde Business Central hacia el Portal de Requisiciones.
 - **Documento enviado a Business Central.** El unico documento que el portal envia hacia Business Central es la orden de compra o pedido de compra.
-- **Aprobacion antes de sincronizar.** La orden de compra primero debe aprobarse; despues aparece la accion para sincronizar a Dynamics/Business Central.
+- **Aprobacion antes de integrar.** La orden de compra primero debe aprobarse; despues aparece la accion **Integrar a BC**.
 - **Requisicion rechazada.** Cuando una requisicion es rechazada, el Operativo puede corregirla y reenviarla. No se crea una requisicion nueva; se conserva la misma cabecera y el mismo numero.
 
 ## Puntos clave de valor
@@ -49,11 +46,12 @@ Estos son los aspectos mas relevantes de la aplicacion:
 
 1. **Flujo completo de requisicion a orden de compra.** El portal controla el proceso desde la solicitud inicial hasta la generacion e integracion de la OC.
 2. **Integracion controlada con Business Central.** Los catalogos se sincronizan desde BC hacia el portal y solo la OC aprobada se envia de regreso.
-3. **Control por roles operativos.** Cada etapa tiene responsables definidos: Operativo, Jefe de Area, Gestor de Compras e Integrador.
+3. **Control por roles operativos.** Cada etapa tiene responsables definidos: Operativo, Jefe de Area y Gestor de Compras.
 4. **Gestion multiempresa.** La empresa activa separa catalogos, configuraciones, requisiciones y compras.
 5. **Administracion de dimensiones por empresa.** Cada empresa puede definir sus dimensiones contables u operativas segun su propia estructura.
 6. **Dimensiones organizadas como arbol.** Los valores de dimension pueden relacionarse jerarquicamente para autocompletar valores padre al seleccionar un valor hijo.
 7. **Obligatoriedad de dimensiones por tipo de articulo.** El sistema exige dimensiones cuando corresponde segun si el articulo es de inventario, servicio o fuera de inventario.
 8. **Carga masiva de lineas por Excel.** El Operativo puede acelerar la captura de requisiciones respetando las columnas de dimension configuradas.
-9. **Aprobacion e integracion final separadas.** La OC se revisa y aprueba antes de habilitar su sincronizacion con Dynamics/Business Central.
+9. **Aprobacion e integracion final por Compras.** La OC se revisa, aprueba y luego se integra a Business Central desde la revision de ordenes de compra.
 10. **Requisiciones rechazadas corregibles.** El Operativo puede corregir y reenviar una requisicion rechazada sin perder trazabilidad.
+
