@@ -5,22 +5,23 @@ title: Flujo General
 
 # Flujo General
 
-El flujo inicia con la parametrizacion y sincronizacion de catalogos. Luego el Operativo crea la requisicion, el Jefe de Area la revisa y el Gestor de Compras completa la informacion comercial, revisa la orden de compra y la integra con Business Central.
+El flujo inicia con la parametrizacion y la carga inicial de catalogos por empresa. Luego el Operativo crea la requisicion, el Jefe de Area la revisa y el Gestor de Compras completa la informacion comercial, revisa la orden de compra y la integra con Business Central.
 
 ## Secuencia funcional
 
 1. El Administrador selecciona o configura la empresa de trabajo.
-2. El Administrador sincroniza los catalogos desde Business Central hacia el portal.
-3. El Administrador valida usuarios, roles, areas, tipos de requisicion, dimensiones y valores de dimension.
-4. El Operativo crea una requisicion y agrega sus lineas.
-5. El Operativo guarda o envia la requisicion al Jefe de Area.
-6. El Jefe de Area aprueba o rechaza la requisicion.
-7. Si se aprueba, el sistema genera gestiones de compra por linea.
-8. El Gestor de Compras completa proveedor, cantidad confirmada, costo y fecha de entrega.
-9. El Gestor usa **Enviar a revision de compra** para generar la orden de compra.
-10. El Gestor revisa la orden de compra en **Compras > Revision OC**.
-11. El Gestor aprueba o rechaza la orden.
-12. Despues de aprobar, el sistema habilita **Integrar a BC** para enviar la OC a Business Central.
+2. El Administrador ingresa a **Administracion > Carga Inicial**, confirma el codigo de empresa y sincroniza los catalogos desde Business Central hacia el portal.
+3. El Administrador revisa el progreso de la carga inicial y, si ocurre un error o interrupcion, usa **Continuar desde fallo** despues de corregir la causa.
+4. El Administrador valida usuarios, roles, areas, tipos de requisicion, dimensiones y valores de dimension.
+5. El Operativo crea una requisicion y agrega sus lineas.
+6. El Operativo guarda o envia la requisicion al Jefe de Area.
+7. El Jefe de Area aprueba o rechaza la requisicion.
+8. Si se aprueba, el sistema genera gestiones de compra por linea.
+9. El Gestor de Compras completa proveedor, cantidad confirmada, costo y fecha de entrega.
+10. El Gestor usa **Enviar a revision de compra** para generar la orden de compra.
+11. El Gestor revisa la orden de compra en **Compras > Revision OC**.
+12. El Gestor aprueba o rechaza la orden.
+13. Despues de aprobar, el sistema habilita **Integrar a BC** para enviar la OC a Business Central.
 
 ## Mapa de estados
 
@@ -37,3 +38,9 @@ La parte superior muestra la empresa activa. Los datos de requisiciones, compras
 ![Inicio del Administrador con empresa activa](/img/manual/general/inicio-administrador.png)
 
 Si el usuario tiene mas de una empresa asignada, debe seleccionar la empresa correcta antes de trabajar. Al cambiar de empresa, el portal recarga la informacion para evitar mezclar datos entre companias.
+
+## Alertas de carga inicial
+
+Cuando existe una carga inicial en proceso, completada, detenida o interrumpida, el portal muestra una alerta superior con la accion **Ver carga**. La alerta permite regresar a **Administracion > Carga Inicial** para revisar el paso actual, continuar desde el ultimo fallo o limpiar el estado cuando corresponda.
+
+Durante la carga inicial se puede navegar dentro de la aplicacion, pero no se debe cerrar ni recargar el navegador. Si eso ocurre, el portal marca la carga como interrumpida para la empresa activa y permite reanudarla desde los pasos pendientes.

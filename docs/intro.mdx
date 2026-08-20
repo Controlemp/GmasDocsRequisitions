@@ -15,7 +15,7 @@ El portal centraliza las requisiciones internas, controla sus aprobaciones, perm
 
 El Portal de Requisiciones permite administrar el ciclo completo de compra interna:
 
-1. El Administrador configura la empresa, usuarios, areas, catalogos y dimensiones.
+1. El Administrador configura la empresa, ejecuta la carga inicial de catalogos, valida usuarios, roles, areas, catalogos y dimensiones.
 2. El Operativo crea la requisicion y registra sus lineas.
 3. El Jefe de Area revisa la solicitud y decide si la aprueba o la rechaza.
 4. El Gestor de Compras completa la informacion comercial de la compra.
@@ -27,7 +27,7 @@ La documentacion esta organizada por rol. Cada seccion muestra las pantallas y a
 
 | Rol | Responsabilidad principal |
 | --- | --- |
-| Administrador del Sistema | Parametriza empresas, usuarios, roles, areas, catalogos y dimensiones. |
+| Administrador del Sistema | Parametriza empresas, ejecuta la carga inicial, consulta logs, valida usuarios, roles, areas, catalogos y dimensiones. |
 | Operativo | Crea requisiciones, carga lineas y envia al Jefe de Area. |
 | Jefe de Area | Revisa requisiciones pendientes, aprueba o rechaza. |
 | Gestor de Compras | Completa datos de compra, envia a revision de compra, aprueba/rechaza la OC e integra a Business Central. |
@@ -35,7 +35,9 @@ La documentacion esta organizada por rol. Cada seccion muestra las pantallas y a
 ## Reglas funcionales importantes
 
 - **Empresa activa.** Las configuraciones, catalogos, requisiciones y compras se trabajan segun la empresa seleccionada por el usuario.
+- **Carga inicial por empresa.** El Administrador debe seleccionar una empresa, confirmar su codigo y ejecutar la carga completa para traer empresas, almacenes, dimensiones, valores de dimension, arbol de dimensiones, articulos y proveedores.
 - **Catalogos desde Business Central.** La sincronizacion de catalogos es unidireccional: desde Business Central hacia el Portal de Requisiciones.
+- **Actualizacion de catalogos.** El Administrador puede consultar catalogos y actualizarlos desde Business Central mediante carga inicial o sincronizaciones parciales.
 - **Documento enviado a Business Central.** El unico documento que el portal envia hacia Business Central es la orden de compra o pedido de compra.
 - **Aprobacion antes de integrar.** La orden de compra primero debe aprobarse; despues aparece la accion **Integrar a BC**.
 - **Requisicion rechazada.** Cuando una requisicion es rechazada, el Operativo puede corregirla y reenviarla. No se crea una requisicion nueva; se conserva la misma cabecera y el mismo numero.
@@ -45,13 +47,14 @@ La documentacion esta organizada por rol. Cada seccion muestra las pantallas y a
 Estos son los aspectos mas relevantes de la aplicacion:
 
 1. **Flujo completo de requisicion a orden de compra.** El portal controla el proceso desde la solicitud inicial hasta la generacion e integracion de la OC.
-2. **Integracion controlada con Business Central.** Los catalogos se sincronizan desde BC hacia el portal y solo la OC aprobada se envia de regreso.
+2. **Integracion controlada con Business Central.** Los catalogos se sincronizan desde BC hacia el portal mediante carga inicial o sincronizacion parcial, y solo la OC aprobada se envia de regreso.
 3. **Control por roles operativos.** Cada etapa tiene responsables definidos: Operativo, Jefe de Area y Gestor de Compras.
-4. **Gestion multiempresa.** La empresa activa separa catalogos, configuraciones, requisiciones y compras.
+4. **Gestion multiempresa.** La empresa activa separa catalogos, configuraciones, requisiciones, compras y el estado de la carga inicial.
 5. **Administracion de dimensiones por empresa.** Cada empresa puede definir sus dimensiones contables u operativas segun su propia estructura.
-6. **Dimensiones organizadas como arbol.** Los valores de dimension pueden relacionarse jerarquicamente para autocompletar valores padre al seleccionar un valor hijo.
+6. **Dimensiones organizadas como arbol.** Los valores de dimension pueden relacionarse jerarquicamente mediante el codigo de consolidacion para revisar rutas padre-hijo y autocompletar valores padre al seleccionar un valor hijo.
 7. **Obligatoriedad de dimensiones por tipo de articulo.** El sistema exige dimensiones cuando corresponde segun si el articulo es de inventario, servicio o fuera de inventario.
 8. **Carga masiva de lineas por Excel.** El Operativo puede acelerar la captura de requisiciones respetando las columnas de dimension configuradas.
 9. **Aprobacion e integracion final por Compras.** La OC se revisa, aprueba y luego se integra a Business Central desde la revision de ordenes de compra.
-10. **Requisiciones rechazadas corregibles.** El Operativo puede corregir y reenviar una requisicion rechazada sin perder trazabilidad.
+10. **Auditoria operativa.** El Administrador puede consultar logs del sistema con filtros por archivo, nivel, fechas y cantidad de lineas para apoyar diagnosticos.
+11. **Requisiciones rechazadas corregibles.** El Operativo puede corregir y reenviar una requisicion rechazada sin perder trazabilidad.
 

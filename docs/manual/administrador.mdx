@@ -5,22 +5,47 @@ title: Administrador
 
 # Administrador del Sistema
 
-El Administrador prepara el portal para que el flujo de requisiciones funcione correctamente por empresa, area y rol. La carga inicial de catalogos la realiza el dueno del producto; el usuario administrador del portal debe sincronizar y validar la informacion disponible.
+El Administrador prepara el portal para que el flujo de requisiciones funcione correctamente por empresa, area y rol. Tambien ejecuta la carga inicial de catalogos desde Business Central, revisa el avance de la sincronizacion y consulta logs del sistema cuando se requiere diagnostico.
 
 ![Menu de administracion](/img/manual/administracion/listado-empresas.png)
 
 ## Orden recomendado de parametrizacion
 
 1. Empresas.
+2. Seleccion de empresa activa.
+3. Carga Inicial.
+4. Tipos de Requisicion.
+5. Usuarios.
+6. Roles por usuario.
+7. Areas y responsables.
+8. Validacion de almacenes, articulos, proveedores, dimensiones y valores de dimension.
+
+## Carga inicial
+
+En **Administracion > Carga Inicial** se ejecuta la sincronizacion completa de catalogos desde Business Central para la empresa activa.
+
+Antes de iniciar, el Administrador debe seleccionar la empresa correcta e ingresar exactamente su codigo en el campo **Codigo de empresa**. Esta confirmacion evita ejecutar la carga sobre una compania equivocada.
+
+La carga inicial ejecuta los pasos en este orden:
+
+1. Empresas.
 2. Almacenes.
-3. Articulos.
-4. Proveedores.
-5. Dimensiones.
-6. Valores de Dimension.
-7. Tipos de Requisicion.
-8. Usuarios.
-9. Roles por usuario.
-10. Areas y responsables.
+3. Dimensiones.
+4. Valores de dimension.
+5. Arbol de dimensiones.
+6. Articulos.
+7. Proveedores.
+
+Cada paso muestra su estado: Pendiente, En proceso, Completado o Error. Cuando el servicio devuelve totales, la pantalla presenta registros obtenidos, creados, actualizados, desactivados y omitidos.
+
+Acciones disponibles:
+
+- **Sincronizar catalogos.** Inicia la carga completa desde el primer paso.
+- **Continuar desde fallo.** Reanuda una carga detenida o interrumpida, omitiendo los pasos que ya finalizaron correctamente.
+- **Descargar estado.** Descarga un archivo JSON con el estado de la carga de la empresa activa.
+- **Limpiar estado.** Reinicia el seguimiento local de la carga cuando no esta en ejecucion.
+
+Durante la carga inicial se puede navegar dentro del portal, pero no se debe cerrar ni recargar el navegador. Si la carga se interrumpe por cierre o recarga, el portal conserva el avance por empresa y permite continuarla desde los pasos pendientes.
 
 ## Sincronizacion de catalogos
 
@@ -32,10 +57,17 @@ Catalogos sincronizables:
 - Almacenes.
 - Dimensiones.
 - Valores de Dimension.
+- Arbol de dimensiones.
 - Articulos.
 - Proveedores.
 
-En los listados donde exista la accion **Sincronizar Datos**, el Administrador debe ejecutarla para actualizar informacion desde Business Central.
+En los listados donde exista la accion **Sincronizar Datos** o **Traer ... desde BC**, el Administrador puede ejecutar una sincronizacion parcial del catalogo correspondiente. Para una empresa nueva o una recuperacion completa, se recomienda usar primero **Carga Inicial**.
+
+## Administracion de catalogos
+
+El Administrador puede consultar los catalogos del portal, buscar registros, imprimir listados, exportar a Excel y actualizar informacion desde Business Central cuando exista una accion de sincronizacion.
+
+Para catalogos que vienen desde Business Central, el trabajo operativo recomendado es revisar la informacion sincronizada, validar que corresponda a la empresa activa y volver a sincronizar despues de cualquier ajuste realizado en BC.
 
 ## Empresas
 
@@ -100,6 +132,15 @@ Los valores de dimension contienen los codigos seleccionables por el usuario en 
 
 Cuando los valores tienen relacion padre-hijo, el sistema puede autocompletar dimensiones superiores. Por ejemplo, si el usuario selecciona un valor hijo en una dimension inferior, el portal resuelve los valores padre relacionados mediante la jerarquia configurada.
 
+En el listado **Valores de Dimension**, la columna **Codigo Consolidacion** permite abrir el arbol de consolidacion cuando el valor tiene relacion jerarquica.
+
+El dialogo muestra:
+
+- Ruta de consolidacion del valor seleccionado.
+- Arbol expandible de valores relacionados.
+- Detalle del valor seleccionado: codigo, nombre, codigo de consolidacion, parent ID y estado.
+- Advertencia si existe una referencia a padre que no se encuentra en los datos sincronizados.
+
 ## Almacenes, articulos y proveedores
 
 Los almacenes, articulos y proveedores se consultan por empresa activa.
@@ -111,4 +152,19 @@ Los almacenes, articulos y proveedores se consultan por empresa activa.
 ![Proveedores](/img/manual/administracion/listado-proveedores.png)
 
 El usuario debe revisar que estos catalogos esten sincronizados antes de iniciar pruebas o uso productivo del flujo.
+
+## Logs del sistema
+
+En **Administracion > Logs del Sistema** el Administrador puede consultar registros tecnicos del backend para apoyar diagnosticos operativos.
+
+La pantalla permite:
+
+- Seleccionar un archivo de log o consultar todos.
+- Filtrar por nivel: Error, Warning o Information.
+- Definir rango de fechas.
+- Limitar la cantidad de lineas consultadas o traer todos los registros permitidos por la pantalla.
+- Buscar sobre los resultados visibles.
+- Imprimir o exportar a Excel.
+
+Los logs pueden incluir fecha, nivel, mensaje, ruta, TraceId, SpanId, origen, excepcion y propiedades tecnicas. Esta informacion se usa para diagnostico; no reemplaza la validacion funcional del flujo ni debe compartirse fuera del equipo autorizado.
 

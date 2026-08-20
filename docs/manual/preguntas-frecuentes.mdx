@@ -13,6 +13,22 @@ El portal recarga los datos para trabajar con el alcance de la nueva empresa. Si
 
 No. La sincronizacion de catalogos es unidireccional desde Business Central hacia el portal. El portal solo envia hacia Business Central la orden de compra o pedido de compra cuando el Gestor de Compras usa **Integrar a BC**.
 
+## Que diferencia hay entre Carga Inicial y Sincronizar Datos?
+
+**Carga Inicial** ejecuta una sincronizacion completa y secuencial para la empresa activa: empresas, almacenes, dimensiones, valores de dimension, arbol de dimensiones, articulos y proveedores. **Sincronizar Datos** o **Traer ... desde BC** actualiza un catalogo especifico desde su listado.
+
+## Por que Carga Inicial pide escribir el codigo de empresa?
+
+Porque la carga afecta a la empresa activa. El portal solicita escribir exactamente el codigo de empresa para confirmar que la sincronizacion se ejecutara sobre la compania correcta.
+
+## Que hago si la carga inicial falla o se interrumpe?
+
+Primero revise el mensaje del paso detenido. Despues de corregir la causa, use **Continuar desde fallo** para reanudar desde los pasos pendientes. Si la carga se interrumpio por cerrar o recargar el navegador, el portal conserva el avance local por empresa.
+
+## Para que sirve Descargar estado en Carga Inicial?
+
+Permite descargar un archivo JSON con el avance de la carga inicial de la empresa activa. Es util para soporte o diagnostico cuando se necesita revisar que pasos terminaron y donde se detuvo el proceso.
+
 ## Cuando se genera el numero de requisicion?
 
 El numero se reserva al guardar la requisicion. Al entrar a una nueva requisicion puede verse una referencia temporal con `XXXXXX`.
@@ -28,6 +44,14 @@ Las dimensiones son campos configurados por empresa para clasificar contable u o
 ## Como funciona el autocompletado de dimensiones?
 
 Cuando existen valores relacionados en forma de arbol, seleccionar un valor hijo permite completar valores padre relacionados. Esta regla depende de que la jerarquia este configurada correctamente.
+
+## Como reviso el arbol de un valor de dimension?
+
+En **Administracion > Valores de Dimension**, use la accion disponible sobre **Codigo Consolidacion**. El dialogo muestra la ruta del valor seleccionado, el arbol expandible, el detalle del valor y advertencias si falta una referencia padre.
+
+## Para que sirven los Logs del Sistema?
+
+Sirven para diagnostico tecnico. El Administrador puede filtrar por archivo, nivel, fechas y cantidad de lineas, y luego imprimir o exportar los resultados. Los logs no reemplazan la revision funcional del flujo.
 
 ## Que significa Enviar a revision de compra?
 
